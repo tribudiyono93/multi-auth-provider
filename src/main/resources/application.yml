@@ -1,0 +1,25 @@
+oauth:
+  provider:
+    google:
+      client-id:
+      client-secret:
+      jwks-uri:
+      audience:
+      issuer:
+    azure:
+      client-id:
+      client-secret:
+      tenant-id:
+      jwks-uri:
+      issuer:
+      audience:
+    okta:
+      client-id:
+      client-secret:
+      issuer:
+      audience:
+      jwks-uri:
+    internal:
+      client-secret:
+      issuer:
+      audience:
