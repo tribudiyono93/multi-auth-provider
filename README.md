@@ -39,6 +39,18 @@ setelah mendapatkan id token nya teman-teman bisa hit kembali ke api berikut :
 --header 'Authorization: Bearer GANTI_DENGAN_ID_TOKEN'`
 jika id token nya valid, maka akan mendapatkan response http status 200 OK.
 
+## Self learning
+untuk teman-teman yang mau mempelajari code nya bisa start dari file2 ini ya
+    - src/main/java/com/example/multiauthprovider/config/WebSecurityConfig.java
+    - src/main/java/com/example/multiauthprovider/filter/JWTTokenFilter.java
+    - src/main/java/com/example/multiauthprovider/security/OauthProviderFactory.java
+    - src/main/java/com/example/multiauthprovider/security/OauthProvider.java
+    - src/main/java/com/example/multiauthprovider/security/GoogleAuthProvider.java
+    - src/main/java/com/example/multiauthprovider/security/OktaAuthProvider.java
+    - src/main/java/com/example/multiauthprovider/security/InternalAuthProvider.java
+    - src/main/java/com/example/multiauthprovider/controller/AuthenticationController.java
+    - src/main/java/com/example/multiauthprovider/controller/TestController.java
+
 
 #### Kalo kamu cukup terbantu dengan project ini, boleh banget loh traktir kopi. 😄
 
