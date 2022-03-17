@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
+    //Authenticated request bisa mengakses endpoint ini. karna tidak ada pengecekan ROLE / Authority
     @GetMapping("/greeting")
     public ResponseEntity<String> greeting() {
         return ResponseEntity.ok("Hello from multi auth provider");
     }
 
+    //id token bisa saja authenticated tapi tidak authorized jika ROLE / Authority nya tidak sesuai dengan yang di define
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/admin-resource")
     public ResponseEntity<String> adminResource() {

@@ -41,17 +41,24 @@ public class JWTTokenFilter extends OncePerRequestFilter {
         String token = header.split(" ")[1].trim();
 
         try {
+            //decode jwt tanpa melakukan verifikasi signature
             DecodedJWT decodedJWT = JWT.decode(token);
 
+            // select auth provider berdasarkan issuer
             OauthProvider oauthProvider = oauthProviderFactory.select(decodedJWT.getIssuer());
+            //verifikasi signature, audience dan expiry time
             UserDTO user = oauthProvider.verify(decodedJWT);
+
+            //bisa di tambah proses save / update user ke database
+            //karna untuk authentikasi dengan google / okta (selain internal auth)
+            //itu tanpa proses registrasi user
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     user, null,
                     user.getAuthorities()
             );
 
-            //set security context, means the user is authenticated to access protected resources
+            //set security context, artinya request tsb authenticated / valid
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         } catch (JWTDecodeException | JwkException de) {
