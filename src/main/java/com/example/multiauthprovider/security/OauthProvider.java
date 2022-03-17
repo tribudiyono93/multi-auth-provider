@@ -23,6 +23,8 @@ public abstract class OauthProvider {
     public abstract String getIssuer();
 
     public UserDTO verify(DecodedJWT decodedJWT) throws MalformedURLException, JwkException {
+        //JWKProvider akan get public key nya di jwks uri masing2 provider
+        //tapi g perlu khawatir soal performance karna public key nya akan di cache selama 10 jam.
         JwkProvider provider =  new JwkProviderBuilder(new URL(getJWKUri())).build();
         Jwk jwk = provider.get(decodedJWT.getKeyId());
         Algorithm algorithm = Algorithm.RSA256((RSAPublicKey) jwk.getPublicKey(), null);
